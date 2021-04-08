@@ -2,7 +2,7 @@
 This is a Question-Answering Bert project for HTML content.
 The model simply answers the questions using the text of the HTML context, then
 post-process the answer and return the html section that contains the predicted 
-answer.
+answer after removing the unnecessary items like styles.
 ### Request :
 ```json
         {"html_url": "the url for the article contains the article",
