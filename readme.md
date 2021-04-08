@@ -1,5 +1,5 @@
 # Introduction
-This is a Question-Answering Bert model for HTML content.
+This is a Question-Answering Bert project for HTML content.
 The model simply answers the questions using the text of the HTML context, then
 post-process the answer and return the html section that contains the predicted 
 answer.
