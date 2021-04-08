@@ -1,5 +1,5 @@
 from model import predict
-from process import post_processA, extract_text
+from process import post_process, extract_text
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 import torch
 from starlette.responses import JSONResponse
@@ -21,7 +21,7 @@ class PythonPredictor:
 
         payload['reader'] = 0
         if len(answer[0]) > 0:
-            H, T, img = post_processA(html_article, answer, payload['html_url'], tokenizer=self.tokenizer)
+            H, T, img = post_process(html_article, answer, payload['html_url'], tokenizer=self.tokenizer)
             if H != '':
                 payload['html_snippet'], payload['text_snippet'], payload['images'] = H, T, img
 

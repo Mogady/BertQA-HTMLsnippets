@@ -1,8 +1,6 @@
 import lxml
 from io import StringIO
 from bs4 import BeautifulSoup
-import re
-import tldextract
 
 from images_layout import get_snippets
 
@@ -17,59 +15,6 @@ def extract_text(body):
     chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
     text = ' '.join(chunk for chunk in chunks if chunk)
     return text
-
-
-def clean_View(html, url):
-    """
-    clean HTML , fix invalid urls and images, map the style to rustle stype
-    :param html:
-    :param url:
-    :return:
-    """
-    soup = BeautifulSoup(html, "html.parser")  # create a new bs4 object from the html data loaded
-
-    # remove attributes
-    whitelist = ['a', 'img', 'iframe', 'video']
-    for tag in soup.find_all(True):
-        if tag not in whitelist:
-            for attribute in ["class", "style"]:
-                del tag[attribute]
-
-    # remove ref a tags
-    for a in soup.find_all('a', href=re.compile('#')):
-        a.replaceWithChildren()
-    for x in soup.find_all('a'):
-        if len(x.get_text(strip=True)) == 0:
-            x.extract()
-
-    # fix a url to have a domain if not
-    for link in soup.findAll('a', href=True):
-        href = link.get('href')
-        if not tldextract.extract(href).domain:
-            main_domain = url.split("://")[1].split("/")[0]
-            correct_link = "https://" + main_domain + href
-            link['href'] = correct_link
-
-    # fix img url to have a domian if not
-    for link in soup.findAll('img', src=True):
-        src = link.get('src')
-        if not tldextract.extract(src).domain:
-            main_domain = url.split("://")[1].split("/")[0]
-            correct_link = "https://" + main_domain + src
-            link['src'] = correct_link
-
-    # normaize all the highlights
-    html = re.sub(r'<h[1-6].*?>', '<h4>', str(soup))
-    html = re.sub(r'</h[1-6].*?>', '</h4>', html)
-    return html
-
-
-def smart_truncate(content, length=500, suffix='...'):
-    """ truncate text without cutting a full word"""
-    if len(content) <= length:
-        return content
-    else:
-        return ' '.join(content[:length + 1].split(' ')[0:-1]) + suffix
 
 
 def remove_odd_nodes(tree):
@@ -96,7 +41,7 @@ def _recurse_over_nodes(tree, parent_key, data):
     return data
 
 
-def post_processA(html_context, answer, url, tokenizer):
+def post_process(html_context, answer, url, tokenizer):
     """
     post process the model prediction to get the full HTML chunk the holds the answer
     :param html_context:
