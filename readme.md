@@ -5,14 +5,14 @@ post-process the answer and return the html section that contains the predicted
 answer after removing the unnecessary items like styles.
 ### Request :
 ```json
-        {"html_url": "the url for the article contains the article",
+        {"html_url": "the url for the article",
          "question": "user question",
          "article": "HTML article to extract answer from"
         }
 ```
 ### Output:
 ```json
-        {"html_url": "the url for the whole article contains the article",
+        {"html_url": "the url for the whole article",
          "question": "user question",
          "article": "HTML article to extract answer from",
          "html_snippet": "HTML chunk/section that holds the answer of the question",
