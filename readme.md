@@ -24,10 +24,11 @@ answer.
 
 ### How does it work:
 Here I use distilbert which is pre-trained on the QA task and only
-works with text, not HTML, however, I want a model that can return the HTML version
+works with text, not HTML, however, I want a model that can returns the HTML version
 of the answer, to do that I have to search for the answer in the HTML content and find
 the container element which has the answer in it.
-To do that I parsed the HTML as a tree and started looking in each branch
+
+I parsed the HTML as a tree and started looking in each branch
 for the model predicted answer.
 
 ### How to run:
