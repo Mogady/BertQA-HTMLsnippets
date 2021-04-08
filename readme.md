@@ -32,6 +32,8 @@ the container element which has the answer in it.
 I parsed the HTML as a tree and started looking in each branch
 for the model predicted answer.
 
+you can use different models by changing the model name in predictor.py
+
 ### How to run:
 This is deployed using [cortex-project](https://github.com/cortexproject/cortex).
 #### Install the Cortex CLI.
