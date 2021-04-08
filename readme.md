@@ -17,7 +17,8 @@ answer.
          "article": "HTML article to extract answer from",
          "html_snippet": "HTML chunk/section that holds the answer of the question",
          "text_snippet": "text chunk/section that holds the answer of the question",
-         "images": "list of images exists in the article"
+         "images": "list of images exists in the article",
+         "reader": "indicates if model managed to answer or not"
   
         }
 ```
