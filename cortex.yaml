@@ -1,0 +1,6 @@
+- name: reader
+  predictor:
+    type: python
+    path: predictor.py
+  networking:
+    api_gateway: none
