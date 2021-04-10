@@ -18,7 +18,7 @@ def extract_text(body):
 
 
 def remove_odd_nodes(tree):
-    """ remove empty nodes that has children like <body> """
+    """ remove empty nodes that has only one direct children like <body> and replace it with its' child"""
     for branch in tree:
         if len(branch.getchildren()) == 1:
             if branch.text is None:
@@ -28,7 +28,7 @@ def remove_odd_nodes(tree):
 
 
 def _recurse_over_nodes(tree, parent_key, data):
-    """ reconstruct the tree to have only 1 level of elements rather than having too many branches"""
+    """ reconstruct the tree to have a tree with only one level rather than having too many levels"""
     for branch in tree:
         key = branch.tag
         if branch.getchildren():

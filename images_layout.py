@@ -17,7 +17,7 @@ RE_IMAGES = re.compile(r"<img.*?/>")
 
 def clean_html(html):
     """
-    clean html code for non needed elements
+    clean html code from non needed elements
     :param html:
     :return:
     """
