@@ -1,8 +1,8 @@
 # Introduction
 This is a Question-Answering Bert project for HTML content.
 The model simply answers the questions using the text of the HTML context, then
-post-process the answer and return the html section that contains the predicted 
-answer after removing the unnecessary items like styles.
+post-process the answer and return the html snippet/card that contains the predicted 
+answer after removing the unnecessary items like styles, similar to Google featured snippets.
 
 you can read my article about it [here](https://mogady.medium.com/how-to-use-bert-qa-model-with-html-content-d9bc09149845)
 
